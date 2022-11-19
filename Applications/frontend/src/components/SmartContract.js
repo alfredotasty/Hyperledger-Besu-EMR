@@ -26,24 +26,24 @@ const SmartContract = () => {
         <br />
         <div className='column'>
           <input
-          type='text'
-          className='smart-contract-input input_admit'
-          onChange={(e) => {
-            setGroupId(e.target.value);
-          }}
-        />
+            type='text'
+            className='smart-contract-input input_admit'
+            onChange={(e) => {
+              setGroupId(e.target.value);
+            }}
+          />
         </div>
         <div className='column'>
           <button className='button_admit' onClick={deploy}>Admit(Deploy)</button>
         </div>
-        
-        
+
+
       </div>
-      
+
       <p className='form'>result:{result}</p>
-        
-          
-      
+
+
+
     </div>
   );
 };

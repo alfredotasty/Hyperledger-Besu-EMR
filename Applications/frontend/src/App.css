@@ -2,31 +2,38 @@
   margin-left: 5%;
   margin-bottom: 5%;
 }
-.member-input{
+
+.member-input {
   min-width: 90%;
   min-height: 150px;
 }
+
 .column {
   float: left;
   width: 33.33%;
 }
-.fram{
+
+.fram {
   border-style: dotted;
   border-width: 1px;
   margin: 50px;
 }
-.hr{
-  height:30px
+
+.hr {
+  height: 30px
 }
+
 /* Clear floats after the columns */
 .row:after {
   content: "";
   display: table;
   clear: both;
 }
-.smart-contract-input{
+
+.smart-contract-input {
   width: 400px;
 }
+
 .column-smart-contract {
   float: left;
   width: 50%;
@@ -39,67 +46,76 @@
   clear: both;
 }
 
-.authen{
+.authen {
   word-break: break-all;
   /* width: 1000px; */
 }
+
 .login_body {
   background-color: #FFCD29;
-  
-}
-.login_title{
-font-family: Inter;
-font-size: 48px;
-font-weight: 700;
-line-height: 58px;
-letter-spacing: 0em;
-text-align: center;
-
-
 
 }
+
+.login_title {
+  font-family: Inter;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 58px;
+  letter-spacing: 0em;
+  text-align: center;
+
+
+
+}
+
 .form {
-/* border: 3px solid #f1f1f1; */
-padding: 16px;
+  /* border: 3px solid #f1f1f1; */
+  padding: 16px;
 }
-.green_aleart{
 
-color: #05FF00;
+.green_aleart {
+
+  color: #05FF00;
 }
-.input_connect[type=text], select {
-width: 100%;
-padding: 12px 20px;
-margin: 8px 0;
-display: inline-block;
-border: 1px solid #ccc;
-border-radius: 4px;
-box-sizing: border-box;
+
+.input_connect[type=text],
+select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
-input[type=password], select {
-width: 100%;
-padding: 12px 20px;
-margin: 8px 0;
-display: inline-block;
-border: 1px solid #ccc;
-border-radius: 4px;
-box-sizing: border-box;
+
+input[type=password],
+select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
+
 .button_connect {
-background-color: #05FF00;
-border: none;
-color: rgb(0, 0, 0);
-padding: 15px 32px;
-text-align: center;
-height: auto;
-width: auto;
-border-radius: 0px;
+  background-color: #05FF00;
+  border: none;
+  color: rgb(0, 0, 0);
+  padding: 15px 32px;
+  text-align: center;
+  height: auto;
+  width: auto;
+  border-radius: 0px;
 }
 
 .center {
-display: block;
-margin-left: auto;
-margin-right: auto;
-width: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }
 
 .button_createGroup {
@@ -111,49 +127,50 @@ width: 50%;
   height: auto;
   width: auto;
   border-radius: 0px;
-  }
+}
 
-.button_findMember{
-    background-color: #50c2f7;
-    border: none;
-    color: rgb(0, 0, 0);
-    padding: 10px 20px;
-    text-align: center;
-    height: auto;
-    width: auto;
-    border-radius: 0px;
-    margin-top: 5px;
-  
-    }
+.button_findMember {
+  background-color: #50c2f7;
+  border: none;
+  color: rgb(0, 0, 0);
+  padding: 10px 20px;
+  text-align: center;
+  height: auto;
+  width: auto;
+  border-radius: 0px;
+  margin-top: 5px;
 
-.button_delete{
-      background-color: #ff5d5d;
-      border: none;
-      color: rgb(0, 0, 0);
-      padding: 10px 20px;
-      text-align: center;
-      height: auto;
-      width: auto;
-      border-radius: 0px;
-      margin-top: 5px;
-    
-      }
+}
 
-.button_admit{
-        background-color: #3cfa75;
-        border: none;
-        color: rgb(0, 0, 0);
-        padding: 12px 20px;
-        text-align: center;
-        height: auto;
-        width: auto;
-        border-radius: 4px;
-        margin: 8px 0 ;
-        margin-left: 5px;
-  }
+.button_delete {
+  background-color: #ff5d5d;
+  border: none;
+  color: rgb(0, 0, 0);
+  padding: 10px 20px;
+  text-align: center;
+  height: auto;
+  width: auto;
+  border-radius: 0px;
+  margin-top: 5px;
+
+}
+
+.button_admit {
+  background-color: #3cfa75;
+  border: none;
+  color: rgb(0, 0, 0);
+  padding: 12px 20px;
+  text-align: center;
+  height: auto;
+  width: auto;
+  border-radius: 4px;
+  margin: 8px 0;
+  margin-left: 5px;
+}
 
 
-.input_default[type=text], select {
+.input_default[type=text],
+select {
   width: 90%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -164,7 +181,8 @@ width: 50%;
 }
 
 
-.input_admit[type=text], select {
+.input_admit[type=text],
+select {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -172,5 +190,5 @@ width: 50%;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
- 
+
 }
