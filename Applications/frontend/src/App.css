@@ -10,7 +10,14 @@
   float: left;
   width: 33.33%;
 }
-
+.fram{
+  border-style: dotted;
+  border-width: 1px;
+  margin: 50px;
+}
+.hr{
+  height:30px
+}
 /* Clear floats after the columns */
 .row:after {
   content: "";
