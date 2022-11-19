@@ -31,3 +31,68 @@
   display: table;
   clear: both;
 }
+
+.login-section {
+  width: 100%;
+  word-break: break-all;
+}
+.login_body {
+  background-color: #FFCD29;
+}
+.login_title{
+font-family: Inter;
+font-size: 48px;
+font-weight: 700;
+line-height: 58px;
+letter-spacing: 0em;
+text-align: center;
+
+
+
+}
+.form {
+/* border: 3px solid #f1f1f1; */
+padding: 16px;
+}
+.green_aleart{
+
+color: #05FF00;
+}
+input[type=text], select {
+width: 100%;
+padding: 12px 20px;
+margin: 8px 0;
+display: inline-block;
+border: 1px solid #ccc;
+border-radius: 4px;
+box-sizing: border-box;
+}
+input[type=password], select {
+width: 100%;
+padding: 12px 20px;
+margin: 8px 0;
+display: inline-block;
+border: 1px solid #ccc;
+border-radius: 4px;
+box-sizing: border-box;
+}
+.button_connect {
+background-color: #05FF00;
+border: none;
+color: rgb(0, 0, 0);
+padding: 15px 32px;
+text-align: center;
+height: auto;
+width: auto;
+
+
+border-radius: 0px;
+
+
+}
+.center {
+display: block;
+margin-left: auto;
+margin-right: auto;
+width: 50%;
+}
