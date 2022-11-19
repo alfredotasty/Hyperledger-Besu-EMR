@@ -7,7 +7,7 @@ const Authen = () => {
   const [pwd, setPwd] = useState('');
   const [port, setPort] = useState('');
   const [status, setStatus] = useState('');
-  const login = async () => {
+  const login = () => {
     const data = { username: usr, password: pwd };
     sessionStorage.clear();
     axios.post(`http://localhost:${port}/login`, data).then((response) => {
@@ -80,16 +80,16 @@ const Authen = () => {
     
   };
   return (
-    <div className='authen '>
-       <div className='center '>
-          <h2 className='login_title center '>Login</h2>
+    <div className='authen'>
+       <div className='center'>
+          <h3 className='login_title center '>Login</h3>
       </div>
       {/* <h3>Authentication</h3> */}
       {/* <h4>{status}</h4> */}
       <div class="center form">
       <label>PORT</label>
       <br />
-      <input
+      <input className='input_connect'
         type='text'
         onChange={(e) => {
           setPort(e.target.value);
@@ -98,7 +98,7 @@ const Authen = () => {
       <br />
       <label>Username</label>
       <br />
-      <input
+      <input className='input_connect'
         type='text'
         onChange={(e) => {
           setUsr(e.target.value);
@@ -108,7 +108,7 @@ const Authen = () => {
       <br />
       <label>Password</label>
       <br />
-      <input
+      <input className='center' 
         type='password'
         onChange={(e) => {
           setPwd(e.target.value);

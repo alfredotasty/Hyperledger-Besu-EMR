@@ -39,12 +39,13 @@
   clear: both;
 }
 
-.login-section {
-  width: 100%;
+.authen{
   word-break: break-all;
+  /* width: 1000px; */
 }
 .login_body {
   background-color: #FFCD29;
+  
 }
 .login_title{
 font-family: Inter;
@@ -65,7 +66,7 @@ padding: 16px;
 
 color: #05FF00;
 }
-input[type=text], select {
+.input_connect[type=text], select {
 width: 100%;
 padding: 12px 20px;
 margin: 8px 0;
@@ -91,15 +92,85 @@ padding: 15px 32px;
 text-align: center;
 height: auto;
 width: auto;
-
-
 border-radius: 0px;
-
-
 }
+
 .center {
 display: block;
 margin-left: auto;
 margin-right: auto;
 width: 50%;
+}
+
+.button_createGroup {
+  background-color: #7dd6ff;
+  border: none;
+  color: rgb(0, 0, 0);
+  padding: 15px 32px;
+  text-align: center;
+  height: auto;
+  width: auto;
+  border-radius: 0px;
+  }
+
+.button_findMember{
+    background-color: #50c2f7;
+    border: none;
+    color: rgb(0, 0, 0);
+    padding: 10px 20px;
+    text-align: center;
+    height: auto;
+    width: auto;
+    border-radius: 0px;
+    margin-top: 5px;
+  
+    }
+
+.button_delete{
+      background-color: #ff5d5d;
+      border: none;
+      color: rgb(0, 0, 0);
+      padding: 10px 20px;
+      text-align: center;
+      height: auto;
+      width: auto;
+      border-radius: 0px;
+      margin-top: 5px;
+    
+      }
+
+.button_admit{
+        background-color: #3cfa75;
+        border: none;
+        color: rgb(0, 0, 0);
+        padding: 12px 20px;
+        text-align: center;
+        height: auto;
+        width: auto;
+        border-radius: 4px;
+        margin: 8px 0 ;
+        margin-left: 0px;
+  }
+
+
+.input_default[type=text], select {
+  width: 90%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+
+.input_admit[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+ 
 }

@@ -52,7 +52,7 @@ const PrivacyGroup = () => {
     });
   };
   return (
-    <div class='row'>
+    <div class='row form'>
       <h2>Privacy-Group-Section</h2>
 
       <div class='column'>
@@ -70,7 +70,7 @@ const PrivacyGroup = () => {
         <br />
         <label>Group Name</label>
         <br />
-        <input
+        <input className='input_default'
           type='text'
           onChange={(e) => {
             setGroupName(e.target.value);
@@ -79,14 +79,14 @@ const PrivacyGroup = () => {
         <br />
         <label>Description</label>
         <br />
-        <input
+        <input className='input_default'
           type='text'
           onChange={(e) => {
             setDescription(e.target.value);
           }}
         />
         <br />
-        <button onClick={createGroup}>Create Group</button>
+        <button className='button_createGroup' onClick={createGroup}>Create Group</button>
         <h3>{createResult}</h3>
       </div>
       <div class='column'>
@@ -102,7 +102,7 @@ const PrivacyGroup = () => {
           }}
         ></textarea>
         <br />
-        <button onClick={findGroup}>Find</button>
+        <button className='button_findMember' onClick={findGroup}>Find</button>
         <br />
         <ul>
           {findResult.map((i) => (
@@ -123,7 +123,7 @@ const PrivacyGroup = () => {
           }}
         ></textarea>
         <br />
-        <button onClick={deleteGroup}>delete</button>
+        <button className='button_delete' onClick={deleteGroup}>Delete</button>
         <br />
       </div>
     </div>

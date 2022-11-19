@@ -21,17 +21,29 @@ const SmartContract = () => {
     <div>
       <h3>Smart Contract</h3>
       <h4>Deploy Smart Contract</h4>
-      <label>Privacy Group ID</label>
-      <br />
-      <input
-        type='text'
-        className='smart-contract-input'
-        onChange={(e) => {
-          setGroupId(e.target.value);
-        }}
-      />
-      <button onClick={deploy}>Deploy</button>
-      <p>result:{result}</p>
+      <div className='row form' >
+        <label>Privacy Group ID</label>
+        <br />
+        <div className='column'>
+          <input
+          type='text'
+          className='smart-contract-input input_admit'
+          onChange={(e) => {
+            setGroupId(e.target.value);
+          }}
+        />
+        </div>
+        <div className='column'>
+          <button className='button_admit' onClick={deploy}>Admit(Deploy)</button>
+        </div>
+        
+        
+      </div>
+      
+      <p className='form'>result:{result}</p>
+        
+          
+      
     </div>
   );
 };
