@@ -33,6 +33,8 @@ const SmartContract = () => {
               setGroupId(e.target.value);
             }}
           />
+          <label>choose private key</label>
+          <input type='file'/>
         </div>
         <div className='column'>
           <button className='button_admit' onClick={deploy}>Admit(Deploy)</button>
