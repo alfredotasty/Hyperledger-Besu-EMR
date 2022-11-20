@@ -4,12 +4,12 @@ const cors = require('cors');
 const Web3 = require('web3');
 const Web3Quorum = require('web3js-quorum');
 const { createHttpProvider } = require('web3js-quorum/example/helpers');
-const { users } = require('../db');
+const { users } = require('./Users');
 const mysql = require('mysql2');
 const config = {
   host: 'localhost',
   port: 3306,
-  database: 'besu',
+  database: 'EMR-BESU',
   user: 'root',
   password: 'thenax0306',
 };
@@ -44,7 +44,7 @@ app.post('/create_group', (req, res) => {
   var members = req.body.members.split(',');
   const addresses = [];
   for (member of members) {
-    addresses.push(users[member].publicKey);
+    addresses.push(users[member].tesseraPublicKey);
   }
   const txOptions = {
     addresses: addresses,
@@ -54,7 +54,7 @@ app.post('/create_group', (req, res) => {
   console.log(txOptions);
   web3.priv.createPrivacyGroup(txOptions).then((result) => {
     console.log(result);
-    const queryString = `INSERT INTO groupId (privacyGroupId,members,username) VALUES ('${result}','${req.body.members}','${req.body.user}');`;
+    const queryString = `INSERT INTO PrivacyGroupId (username,privacyGroupId,members) VALUES ('${req.body.user}','${result}','${req.body.members}');`;
     db.query(queryString, (err, result) => {
       console.log(result);
     });
@@ -72,7 +72,7 @@ app.post('/find_group', async (req, res) => {
   var members = req.body.members.split(',');
   const addresses = [];
   for (member of members) {
-    addresses.push(users[member].publicKey);
+    addresses.push(users[member].tesseraPublicKey);
   }
   await web3.priv.findPrivacyGroup(addresses).then((result) => {
     for (i of result) {
@@ -89,7 +89,7 @@ app.post('/delete_group', (req, res) => {
     new Web3(createHttpProvider(req.body.token, url))
   );
   web3.priv.deletePrivacyGroup(req.body.privacyGroupId).then((response) => {
-    const queryString = `DELETE FROM groupId WHERE privacyGroupId='${response}';`;
+    const queryString = `DELETE FROM PrivacyGroupId WHERE privacyGroupId='${response}';`;
     db.query(queryString, (err, result) => {
       console.log(result);
     });
@@ -105,16 +105,16 @@ app.post('/deploy', async (req, res) => {
 
   const txOptions = {
     data: `0x${binary}`,
-    privateKey: users[req.body.user].networkNode.privateKey,
+    privateKey: req.body.privateKey,
     privacyGroupId: req.body.privacyGroupId,
-    privateFrom: users[req.body.user].publicKey,
+    privateFrom: users[req.body.user].tesseraPublicKey,
   };
   console.log('Creating contract...');
   const txHash = await web3.priv.generateAndSendRawTransaction(txOptions);
   console.log('Getting contractAddress from txHash: ', txHash);
   const privateTxReceipt = await web3.priv.waitForTransactionReceipt(txHash);
   console.log('Private Transaction Receipt: ', privateTxReceipt);
-  const queryString = `INSERT INTO transactionAddress (txHash, contractAddress, username) VALUES ('${txHash}', '${privateTxReceipt.contractAddress}', '${req.body.user}');`;
+  const queryString = `INSERT INTO TxAddress (username, contractAddress, privacyGroupId) VALUES ('${req.body.user}','${privateTxReceipt.contractAddress}', '${req.body.privacyGroupId}');`;
   db.query(queryString, (err, result) => {
     console.log(result);
   });
@@ -139,8 +139,8 @@ app.post('/setOwner', async (req, res) => {
   const functionParams = {
     to: req.body.contractAddress,
     data: functionAbi.signature + functionArgs,
-    privateKey: users[req.body.user].networkNode.privateKey,
-    privateFrom: users[req.body.user].publicKey,
+    privateKey: req.body.privateKey,
+    privateFrom: users[req.body.user].tesseraPublicKey,
     privacyGroupId: req.body.privacyGroupId,
   };
   const transactionHash = await web3.priv.generateAndSendRawTransaction(
@@ -172,8 +172,8 @@ app.post('/setName', async (req, res) => {
   const functionParams = {
     to: req.body.contractAddress,
     data: functionAbi.signature + functionArgs,
-    privateKey: users[req.body.user].networkNode.privateKey,
-    privateFrom: users[req.body.user].publicKey,
+    privateKey: req.body.privateKey,
+    privateFrom: users[req.body.user].tesseraPublicKey,
     privacyGroupId: req.body.privacyGroupId,
   };
   const transactionHash = await web3.priv.generateAndSendRawTransaction(
@@ -205,8 +205,8 @@ app.post('/getName', async (req, res) => {
   const functionParams = {
     to: req.body.contractAddress,
     data: functionAbi.signature + functionArgs,
-    privateKey: users[req.body.user].networkNode.privateKey,
-    privateFrom: users[req.body.user].publicKey,
+    privateKey: req.body.privateKey,
+    privateFrom: users[req.body.user].tesseraPublicKey,
     privacyGroupId: req.body.privacyGroupId,
   };
   const transactionHash = await web3.priv.generateAndSendRawTransaction(
@@ -238,8 +238,8 @@ app.post('/setBirthDate', async (req, res) => {
   const functionParams = {
     to: req.body.contractAddress,
     data: functionAbi.signature + functionArgs,
-    privateKey: users[req.body.user].networkNode.privateKey,
-    privateFrom: users[req.body.user].publicKey,
+    privateKey: req.body.privateKey,
+    privateFrom: users[req.body.user].tesseraPublicKey,
     privacyGroupId: req.body.privacyGroupId,
   };
   const transactionHash = await web3.priv.generateAndSendRawTransaction(
@@ -271,8 +271,8 @@ app.post('/getBirthDate', async (req, res) => {
   const functionParams = {
     to: req.body.contractAddress,
     data: functionAbi.signature + functionArgs,
-    privateKey: users[req.body.user].networkNode.privateKey,
-    privateFrom: users[req.body.user].publicKey,
+    privateKey: req.body.privateKey,
+    privateFrom: users[req.body.user].tesseraPublicKey,
     privacyGroupId: req.body.privacyGroupId,
   };
   const transactionHash = await web3.priv.generateAndSendRawTransaction(
@@ -304,8 +304,8 @@ app.post('/setBlood', async (req, res) => {
   const functionParams = {
     to: req.body.contractAddress,
     data: functionAbi.signature + functionArgs,
-    privateKey: users[req.body.user].networkNode.privateKey,
-    privateFrom: users[req.body.user].publicKey,
+    privateKey: req.body.privateKey,
+    privateFrom: users[req.body.user].tesseraPublicKey,
     privacyGroupId: req.body.privacyGroupId,
   };
   const transactionHash = await web3.priv.generateAndSendRawTransaction(
@@ -337,8 +337,8 @@ app.post('/getBlood', async (req, res) => {
   const functionParams = {
     to: req.body.contractAddress,
     data: functionAbi.signature + functionArgs,
-    privateKey: users[req.body.user].networkNode.privateKey,
-    privateFrom: users[req.body.user].publicKey,
+    privateKey: req.privateKey,
+    privateFrom: users[req.body.user].tesseraPublicKey,
     privacyGroupId: req.body.privacyGroupId,
   };
   const transactionHash = await web3.priv.generateAndSendRawTransaction(
@@ -370,8 +370,8 @@ app.post('/getAllowList', async (req, res) => {
   const functionParams = {
     to: req.body.contractAddress,
     data: functionAbi.signature + functionArgs,
-    privateKey: users[req.body.user].networkNode.privateKey,
-    privateFrom: users[req.body.user].publicKey,
+    privateKey: req.body.privateKey,
+    privateFrom: users[req.body.user].tesseraPublicKey,
     privacyGroupId: req.body.privacyGroupId,
   };
   const transactionHash = await web3.priv.generateAndSendRawTransaction(
@@ -403,8 +403,8 @@ app.post('/addAllowList', async (req, res) => {
   const functionParams = {
     to: req.body.contractAddress,
     data: functionAbi.signature + functionArgs,
-    privateKey: users[req.body.user].networkNode.privateKey,
-    privateFrom: users[req.body.user].publicKey,
+    privateKey:req.body.privateKey,
+    privateFrom: users[req.body.user].tesseraPublicKey,
     privacyGroupId: req.body.privacyGroupId,
   };
   const transactionHash = await web3.priv.generateAndSendRawTransaction(
@@ -436,8 +436,8 @@ app.post('/removeAllowList', async (req, res) => {
   const functionParams = {
     to: req.body.contractAddress,
     data: functionAbi.signature + functionArgs,
-    privateKey: users[req.body.user].networkNode.privateKey,
-    privateFrom: users[req.body.user].publicKey,
+    privateKey: req.body.privateKey,
+    privateFrom: users[req.body.user].tesseraPublicKey,
     privacyGroupId: req.body.privacyGroupId,
   };
   const transactionHash = await web3.priv.generateAndSendRawTransaction(
@@ -469,8 +469,8 @@ app.post('/addRecord', async (req, res) => {
   const functionParams = {
     to: req.body.contractAddress,
     data: functionAbi.signature + functionArgs,
-    privateKey: users[req.body.user].networkNode.privateKey,
-    privateFrom: users[req.body.user].publicKey,
+    privateKey: req.body.privateKey,
+    privateFrom: users[req.body.user].tesseraPublicKey,
     privacyGroupId: req.body.privacyGroupId,
   };
   const transactionHash = await web3.priv.generateAndSendRawTransaction(
@@ -502,8 +502,8 @@ app.post('/getRecord', async (req, res) => {
   const functionParams = {
     to: req.body.contractAddress,
     data: functionAbi.signature + functionArgs,
-    privateKey: users[req.body.user].networkNode.privateKey,
-    privateFrom: users[req.body.user].publicKey,
+    privateKey: req.body.privateKey,
+    privateFrom: users[req.body.user].tesseraPublicKey,
     privacyGroupId: req.body.privacyGroupId,
   };
   const transactionHash = await web3.priv.generateAndSendRawTransaction(
