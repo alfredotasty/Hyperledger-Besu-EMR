@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-
+import Swal from 'sweetalert2';
 const PrivacyGroup = () => {
   const [createMembers, setCreateMember] = useState('');
   const [findMembers, setFindMember] = useState('');
@@ -21,6 +21,13 @@ const PrivacyGroup = () => {
     axios.post('http://localhost:4000/create_group', data).then((response) => {
       try {
         setCreateResult(response.data.privacyGroupId);
+        Swal.fire({
+          icon: 'success',
+          title: 'Create Success!!',
+          text: `result: ${response.data.privacyGroupId}`,
+          confirmButtonColor: '#00FF00',
+          confirmButtonText: 'OK',
+        });
       } catch (error) {
         console.log(error);
       }
@@ -35,6 +42,13 @@ const PrivacyGroup = () => {
     axios.post('http://localhost:4000/find_group', data).then((response) => {
       try {
         setFindResult(response.data.resultList);
+        Swal.fire({
+          icon: 'success',
+          title: 'Finding Success!!',
+          text: `result: ${findResult}`,
+          confirmButtonColor: '#00FF00',
+          confirmButtonText: 'OK',
+        });
       } catch (error) {
         console.log(error);
       }
@@ -48,7 +62,13 @@ const PrivacyGroup = () => {
       privacyGroupId: delGroup,
     };
     axios.post('http://localhost:4000/delete_group', data).then((response) => {
-      alert(response.data.result);
+      Swal.fire({
+        icon: 'success',
+        title: 'Delete Success!!',
+        text: `${response.data.result}`,
+        confirmButtonColor: '#00FF00',
+        confirmButtonText: 'OK',
+      });
     });
   };
   return (
