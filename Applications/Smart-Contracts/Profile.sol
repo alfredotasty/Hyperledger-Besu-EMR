@@ -91,11 +91,11 @@ contract Profile {
         return false;
     }
 
-    function addAllowList(string memory keyToAdd, string memory addBy)
+    function addAllowList(string memory keyToAdd, string memory _key)
         public
         returns (bool)
     {
-        if (isOwner(addBy)) {
+        if (isOwner(_key)) {
             allowList.push(keyToAdd);
             return true;
         }
@@ -118,11 +118,11 @@ contract Profile {
         allowList.pop();
     }
 
-    function removeAllowList(string memory keyToRemove, string memory removeBy)
+    function removeAllowList(string memory keyToRemove, string memory _key)
         public
         returns (bool)
     {
-        if (isOwner(removeBy)) {
+        if (isOwner(_key)) {
             uint256 i = find(keyToRemove);
             remove(i);
             return true;
@@ -130,8 +130,8 @@ contract Profile {
         return false;
     }
 
-    function addRecord(string memory addBy, string memory record) public {
-        if (inAllowList(addBy)) {
+    function addRecord(string memory record, string memory _key) public {
+        if (inAllowList(_key)) {
             records.push(record);
         }
     }
