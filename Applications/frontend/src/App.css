@@ -192,3 +192,62 @@ select {
   box-sizing: border-box;
 
 }
+
+:root {
+  --primary-color: #fff; /* try #212121 also for dark mode */
+
+  --font: sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+
+/* Timeline Container */
+.timeline {
+  background: var(--primary-color);
+  margin: 20px auto;
+  padding: 20px;
+}
+
+/* Outer Layer with the timeline border */
+.outer {
+  border-left: 2px solid #333;
+
+}
+.first{
+  margin: 0 0 10px -20px;
+}
+.last{
+  margin: 1px 0 7px -20px;
+  margin-top: -10px ;
+}
+/* Card container */
+.card {
+  position: relative;
+  margin: 0 0 20px 20px;
+  padding: 10px;
+  background: rgba(182, 181, 181, 0.558);
+  color: rgb(0, 0, 0);
+  border-radius: 8px;
+  max-width: 700px;
+}
+
+/* Information about the timeline */
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.title::before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: white;
+  border-radius: 999px;
+  left: -30px;
+  border: 3px solid orangered;
+}
