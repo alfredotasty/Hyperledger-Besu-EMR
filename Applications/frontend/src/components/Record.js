@@ -27,8 +27,6 @@ const Record = () => {
           <input className='input_default' type='text' />
           <br />
           <button className='button_createGroup'>Show History</button>
-          <label>choose private key</label>
-          <input type='file'/>
         </div>
 
         <div class='column'>
