@@ -1,0 +1,5 @@
+{
+    "dataworkspace.excludedProjects": [
+        "Applications/backend/besu/besu.sqlproj"
+    ]
+}
