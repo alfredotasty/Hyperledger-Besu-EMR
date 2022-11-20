@@ -18,9 +18,10 @@ const SmartContract = () => {
     });
   };
   return (
-    <div>
-      <h3>Smart Contract</h3>
-      <h4>Deploy Smart Contract</h4>
+    <div className=''>
+  
+      <br />
+      <h2>Admid Request</h2>
       <div className='row form' >
         <label>Privacy Group ID</label>
         <br />
@@ -41,9 +42,7 @@ const SmartContract = () => {
       </div>
 
       <p className='form'>result:{result}</p>
-
-
-
+      <hr></hr>
     </div>
   );
 };

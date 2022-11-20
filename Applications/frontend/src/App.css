@@ -251,3 +251,20 @@ select {
   left: -30px;
   border: 3px solid orangered;
 }
+.request{
+  justify-content: center;
+}
+.center2 {
+
+    justify-content: center;
+
+}
+
+.container {
+  font-family: arial;
+  font-size: 24px;
+  margin: 25px;
+  width: 500px;
+  height: 200px;
+  outline: dashed 1px black;
+}

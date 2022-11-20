@@ -3,7 +3,8 @@ const History = () => {
     const user = ["Person1","Person2","Person3"]
 
     return(
-        <div>
+     
+        <div className=""> <br />   <br />   <br />
             <h2>Admid History</h2>
         <div className='timeline'>
         <div>

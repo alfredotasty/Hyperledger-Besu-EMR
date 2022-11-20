@@ -82,7 +82,7 @@ const Authen = () => {
   return (
     <div className='authen'>
       <div className='center'>
-        <h3 className='login_title center '>Login</h3>
+        <h3 className='login_title center '>Authentication</h3>
       </div>
       {/* <h3>Authentication</h3> */}
       {/* <h4>{status}</h4> */}
