@@ -13,7 +13,7 @@ const Authen = () => {
     axios.post(`http://localhost:${port}/login`, data).then((response) => {
 
       if (response.data.token.length !== 0) {
-        verifly_token(response.data.token);
+        // verifly_token(response.data.token);
         sessionStorage.setItem('token', response.data.token);
         sessionStorage.setItem('user', usr);
         setStatus(`Login as ${sessionStorage.getItem('user')}`)
@@ -37,48 +37,48 @@ const Authen = () => {
   };
 
 
-  const verifly_token = (token) => {
+  // const verifly_token = (token) => {
 
-    // console.log("param verifly = ",token);
-    const config = {
-      headers: { Authorization: `Bearer ${token}` }
-    };
+  //   // console.log("param verifly = ",token);
+  //   const config = {
+  //     headers: { Authorization: `Bearer ${token}` }
+  //   };
 
-    const bodyParameters = {
-      "jsonrpc": "2.0",
-      "method": "priv_createPrivacyGroup",
-      "params":
-        [
-          {
-            "addresses": [
-              "pUlpb1ZHkNfJXQbVzGkaGeAtGE/qTsmKWeR6/ilZRC8=",
-              "9sTR0aTy3x8tTVZPIAuJCAdLf0u0Fq1kYp2HucnNUmQ=",
-              "16YSE4L7vFYlcErmE74IxSxp5NrG+tkN7VL7Nnrl0DM="
-            ],
-            "name": "Group A",
-            "description": "Description Group A"
-          }
-        ],
-      "id": 1
-    };
+  //   const bodyParameters = {
+  //     "jsonrpc": "2.0",
+  //     "method": "priv_createPrivacyGroup",
+  //     "params":
+  //       [
+  //         {
+  //           "addresses": [
+  //             "pUlpb1ZHkNfJXQbVzGkaGeAtGE/qTsmKWeR6/ilZRC8=",
+  //             "9sTR0aTy3x8tTVZPIAuJCAdLf0u0Fq1kYp2HucnNUmQ=",
+  //             "16YSE4L7vFYlcErmE74IxSxp5NrG+tkN7VL7Nnrl0DM="
+  //           ],
+  //           "name": "Group A",
+  //           "description": "Description Group A"
+  //         }
+  //       ],
+  //     "id": 1
+  //   };
 
-    axios.post('http://localhost:8545', bodyParameters, config).then((response) => {
-      setStatus(response.request.status);
-      console.log(response.request.status);
-      // console.log('Login Status = ',status);
-      Swal.fire({
-        icon: 'success',
-        title: "Connect Success!!",
-        text: response.data.message,
-        confirmButtonColor: "#00FF00",
-        confirmButtonText: "OK",
-      })
-      // return response;
+  //   axios.post('http://localhost:8545', bodyParameters, config).then((response) => {
+  //     setStatus(response.request.status);
+  //     console.log(response.request.status);
+  //     // console.log('Login Status = ',status);
+  //     Swal.fire({
+  //       icon: 'success',
+  //       title: "Connect Success!!",
+  //       text: response.data.message,
+  //       confirmButtonColor: "#00FF00",
+  //       confirmButtonText: "OK",
+  //     })
+  //     // return response;
 
-    });
+  //   });
 
 
-  };
+  // };
   return (
     <div className='authen'>
       <div className='center'>
