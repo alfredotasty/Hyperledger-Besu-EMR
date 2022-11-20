@@ -105,7 +105,7 @@ app.post('/deploy', async (req, res) => {
 
   const txOptions = {
     data: `0x${binary}`,
-    privateKey: req.body.privateKey,
+    privateKey: users[req.body.user].privateKey,
     privacyGroupId: req.body.privacyGroupId,
     privateFrom: users[req.body.user].tesseraPublicKey,
   };
@@ -139,7 +139,7 @@ app.post('/setOwner', async (req, res) => {
   const functionParams = {
     to: req.body.contractAddress,
     data: functionAbi.signature + functionArgs,
-    privateKey: req.body.privateKey,
+    privateKey: users[req.body.user].privateKey,
     privateFrom: users[req.body.user].tesseraPublicKey,
     privacyGroupId: req.body.privacyGroupId,
   };
@@ -172,7 +172,7 @@ app.post('/setName', async (req, res) => {
   const functionParams = {
     to: req.body.contractAddress,
     data: functionAbi.signature + functionArgs,
-    privateKey: req.body.privateKey,
+    privateKey: users[req.body.user].privateKey,
     privateFrom: users[req.body.user].tesseraPublicKey,
     privacyGroupId: req.body.privacyGroupId,
   };
@@ -205,7 +205,7 @@ app.post('/getName', async (req, res) => {
   const functionParams = {
     to: req.body.contractAddress,
     data: functionAbi.signature + functionArgs,
-    privateKey: req.body.privateKey,
+    privateKey: users[req.body.user].privateKey,
     privateFrom: users[req.body.user].tesseraPublicKey,
     privacyGroupId: req.body.privacyGroupId,
   };
@@ -238,7 +238,7 @@ app.post('/setBirthDate', async (req, res) => {
   const functionParams = {
     to: req.body.contractAddress,
     data: functionAbi.signature + functionArgs,
-    privateKey: req.body.privateKey,
+    privateKey: users[req.body.user].privateKey,
     privateFrom: users[req.body.user].tesseraPublicKey,
     privacyGroupId: req.body.privacyGroupId,
   };
@@ -271,7 +271,7 @@ app.post('/getBirthDate', async (req, res) => {
   const functionParams = {
     to: req.body.contractAddress,
     data: functionAbi.signature + functionArgs,
-    privateKey: req.body.privateKey,
+    privateKey: users[req.body.user].privateKey,
     privateFrom: users[req.body.user].tesseraPublicKey,
     privacyGroupId: req.body.privacyGroupId,
   };
@@ -304,7 +304,7 @@ app.post('/setBlood', async (req, res) => {
   const functionParams = {
     to: req.body.contractAddress,
     data: functionAbi.signature + functionArgs,
-    privateKey: req.body.privateKey,
+    privateKey: users[req.body.user].privateKey,
     privateFrom: users[req.body.user].tesseraPublicKey,
     privacyGroupId: req.body.privacyGroupId,
   };
@@ -337,7 +337,7 @@ app.post('/getBlood', async (req, res) => {
   const functionParams = {
     to: req.body.contractAddress,
     data: functionAbi.signature + functionArgs,
-    privateKey: req.privateKey,
+    privateKey: users[req.body.user].privateKey,
     privateFrom: users[req.body.user].tesseraPublicKey,
     privacyGroupId: req.body.privacyGroupId,
   };
@@ -370,7 +370,7 @@ app.post('/getAllowList', async (req, res) => {
   const functionParams = {
     to: req.body.contractAddress,
     data: functionAbi.signature + functionArgs,
-    privateKey: req.body.privateKey,
+    privateKey: users[req.body.user].privateKey,
     privateFrom: users[req.body.user].tesseraPublicKey,
     privacyGroupId: req.body.privacyGroupId,
   };
@@ -403,7 +403,7 @@ app.post('/addAllowList', async (req, res) => {
   const functionParams = {
     to: req.body.contractAddress,
     data: functionAbi.signature + functionArgs,
-    privateKey:req.body.privateKey,
+    privateKey:users[req.body.user].privateKey,
     privateFrom: users[req.body.user].tesseraPublicKey,
     privacyGroupId: req.body.privacyGroupId,
   };
@@ -436,7 +436,7 @@ app.post('/removeAllowList', async (req, res) => {
   const functionParams = {
     to: req.body.contractAddress,
     data: functionAbi.signature + functionArgs,
-    privateKey: req.body.privateKey,
+    privateKey: users[req.body.user].privateKey,
     privateFrom: users[req.body.user].tesseraPublicKey,
     privacyGroupId: req.body.privacyGroupId,
   };
@@ -469,7 +469,7 @@ app.post('/addRecord', async (req, res) => {
   const functionParams = {
     to: req.body.contractAddress,
     data: functionAbi.signature + functionArgs,
-    privateKey: req.body.privateKey,
+    privateKey: users[req.body.user].privateKey,
     privateFrom: users[req.body.user].tesseraPublicKey,
     privacyGroupId: req.body.privacyGroupId,
   };
@@ -502,7 +502,7 @@ app.post('/getRecord', async (req, res) => {
   const functionParams = {
     to: req.body.contractAddress,
     data: functionAbi.signature + functionArgs,
-    privateKey: req.body.privateKey,
+    privateKey: users[req.body.user].privateKey,
     privateFrom: users[req.body.user].tesseraPublicKey,
     privacyGroupId: req.body.privacyGroupId,
   };
