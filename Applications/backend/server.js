@@ -4,7 +4,7 @@ const cors = require('cors');
 const Web3 = require('web3');
 const Web3Quorum = require('web3js-quorum');
 const { createHttpProvider } = require('web3js-quorum/example/helpers');
-const { users } = require('../db');
+const { users } = require('../backend/db');
 const mysql = require('mysql2');
 const config = {
   host: 'localhost',
