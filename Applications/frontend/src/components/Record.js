@@ -263,7 +263,7 @@ const Record = () => {
         setRecords(response.data.result);
         Swal.fire({
           icon: 'success',
-          title: 'Read Success!! \n Admit ID',
+          title: 'Fetch History  Success!! \n Admit ID',
           text: response.data.result,
           confirmButtonColor: '#00FF00',
           confirmButtonText: 'OK',
@@ -274,7 +274,7 @@ const Record = () => {
           // console.log(err.response.status);
           Swal.fire({
             icon: 'error',
-            title: 'Read Fail',
+            title: 'Fetch History Fail',
             text: err.message,
             confirmButtonColor: '#FF0000',
             confirmButtonText: 'Close',
@@ -484,7 +484,7 @@ const Record = () => {
         {' '}
         <br /> <br /> <br />
         <h2>Admid History</h2>
-        <button onClick={getRecords}>get record</button>
+        <button className='button_admit' onClick={getRecords}>get record</button>
         <div className='timeline'>
           <div>
             <h3 className='first'>First</h3>
