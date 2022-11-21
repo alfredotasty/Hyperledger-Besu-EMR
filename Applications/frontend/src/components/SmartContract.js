@@ -10,6 +10,7 @@ const SmartContract = () => {
   const [removeKey, setRemoveKey] = useState('');
   const [contractAddress, setContractAddress] = useState('');
   const [privacyGroupId, setPrivacyGroupId] = useState('');
+  
   const deploy = () => {
     const data = {
       token: sessionStorage.getItem('token'),
