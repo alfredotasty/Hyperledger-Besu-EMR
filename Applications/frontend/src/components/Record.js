@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const Record = () => {
   // test data
-
+  const [records, setRecords] = useState([]);
   const [privacyGroupId, setPrivacyGroupId] = useState('');
   const [result, setResult] = useState('');
   const [name, setName] = useState('');
@@ -249,6 +249,39 @@ const Record = () => {
         }
       });
   };
+  const getRecords = () => {
+    const data = {
+      user: sessionStorage.getItem('user'),
+      contractAddress: contractAddress,
+      privacyGroupId: privacyGroupId,
+      value: verifyKey,
+      token: sessionStorage.getItem('token'),
+    };
+    axios
+      .post('http://localhost:4000/getRecord', data)
+      .then((response) => {
+        setRecords(response.data.result);
+        Swal.fire({
+          icon: 'success',
+          title: 'Read Success!! \n Admit ID',
+          text: response.data.result,
+          confirmButtonColor: '#00FF00',
+          confirmButtonText: 'OK',
+        });
+      })
+      .catch((err) => {
+        if (err.name === 'AxiosError') {
+          // console.log(err.response.status);
+          Swal.fire({
+            icon: 'error',
+            title: 'Read Fail',
+            text: err.message,
+            confirmButtonColor: '#FF0000',
+            confirmButtonText: 'Close',
+          });
+        }
+      });
+  };
   const handleContractInput = () => {
     console.log(contractAddress);
     if (contractAddress != '') {
@@ -445,6 +478,34 @@ const Record = () => {
           <button className='button_createGroup' onClick={saveDate}>
             Save
           </button>
+        </div>
+      </div>
+      <div className=''>
+        {' '}
+        <br /> <br /> <br />
+        <h2>Admid History</h2>
+        <button onClick={getRecords}>get record</button>
+        <div className='timeline'>
+          <div>
+            <h3 className='first'>First</h3>
+          </div>
+          <div className='outer'>
+            {records.map((record, i) => (
+              <div className='card' key={i}>
+                <div className='title'>
+                  <div className='info'>
+                    <h3>History</h3>
+                    <p>From: {record.split('++')[0]}</p>
+                    <p>Detail: {record.split('++')[1]}</p>
+                    <p>Date : {record.split('++')[2]}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div>
+            <h3 className='last'>Last</h3>
+          </div>
         </div>
       </div>
     </div>

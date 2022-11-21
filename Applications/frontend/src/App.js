@@ -13,7 +13,7 @@ function App() {
       <PrivacyGroup />
       <SmartContract />
       <Record/>
-      <History/>
+      {/* <History/> */}
     </div>
   );
 }
