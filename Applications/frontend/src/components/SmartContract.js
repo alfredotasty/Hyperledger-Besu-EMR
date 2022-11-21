@@ -31,7 +31,6 @@ const SmartContract = () => {
       .catch((err) => {
         if (err.name === 'AxiosError') {
           // console.log(err.response.status);
-
           Swal.fire({
             icon: 'error',
             title: 'Admit Fail',
@@ -54,7 +53,23 @@ const SmartContract = () => {
     console.log(data);
     axios.post('http://localhost:4000/getAllowList', data).then((response) => {
       setAllowList(response.data.result);
-    });
+      Swal.fire({
+        icon: 'success',
+        title: 'Success!! ',
+        text: response.data.result,
+        confirmButtonColor: '#00FF00',
+        confirmButtonText: 'OK',
+      });
+
+    }).catch((err) => {
+      Swal.fire({
+        icon: 'error',
+        title: 'Show Error',
+        text: err.message,
+        confirmButtonColor: '#FF0000',
+        confirmButtonText: 'Close',
+      });
+    })
   };
 
   const addAllowList = () => {
@@ -66,8 +81,22 @@ const SmartContract = () => {
       token: sessionStorage.getItem('token'),
     };
     axios.post('http://localhost:4000/addAllowList', data).then((response) => {
-      alert('added')
-    });
+      Swal.fire({
+        icon: 'success',
+        title: 'Success!! ',
+        text: response.data.result,
+        confirmButtonColor: '#00FF00',
+        confirmButtonText: 'OK',
+      });
+    }).catch((err) => {
+      Swal.fire({
+        icon: 'error',
+        title: 'Add allowlist Error',
+        text: err.message,
+        confirmButtonColor: '#FF0000',
+        confirmButtonText: 'Close',
+      });
+    })
   };
   const removeAllowList = () => {
     const data = {
@@ -79,7 +108,22 @@ const SmartContract = () => {
     };
     axios.post('http://localhost:4000/removeAllowList', data).then((response) => {
       alert('deleted')
-    });
+      Swal.fire({
+        icon: 'success',
+        title: 'Delete Success!! ',
+        text: response.data.result,
+        confirmButtonColor: '#00FF00',
+        confirmButtonText: 'OK',
+      });
+    }).catch((err) => {
+      Swal.fire({
+        icon: 'error',
+        title: 'Delete Error',
+        text: err.message,
+        confirmButtonColor: '#FF0000',
+        confirmButtonText: 'Close',
+      });
+    })
   }
   return (
     <div className=''>
