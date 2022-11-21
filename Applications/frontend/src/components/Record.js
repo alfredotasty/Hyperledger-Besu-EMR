@@ -339,21 +339,21 @@ const Record = () => {
             onChange={(e) => {
             setName(e.target.value);
           }} />
-          <button className='button_createGroup'>Read</button>
+          <button className='button_createGroup' onClick={readName}>Read</button>
           <button className='button_createGroup' onClick={saveName} >Save</button>
           <h4>Blood group:-:{bloodResult}</h4>
           <input className='input_default' type='text'
            onChange={(e) => {
             setBlood(e.target.value);
           }}  />
-          <button className='button_createGroup'>Read</button>
+          <button className='button_createGroup' onClick={readBlood}>Read</button>
           <button className='button_createGroup' onClick={saveBlood}>Save</button>
           <h4>Birth date:-:{dateResult}</h4>
           <input className='input_default' type='text' 
           onChange={(e) => {
             setDate(e.target.value);
           }} />
-          <button className='button_createGroup'>Read</button>
+          <button className='button_createGroup' onClick={readDate}>Read</button>
           <button className='button_createGroup' onClick={saveDate}>Save</button>
         </div>
       </div>
